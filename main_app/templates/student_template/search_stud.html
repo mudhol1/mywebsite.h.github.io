@@ -1,0 +1,68 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}Achievement Details{% endblock page_title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">{{page_title}}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Full Name</th>
+                                    <th>Stduent_details</th>
+                                  <th>proof_pic</th>                                  
+                                    <th>Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+{% if results %}
+{% for student in results %}
+                                <tr>
+                                   
+
+
+<td>{{student.student.first_name}}</td>
+<td>{{student.Student_Details}}</td>
+<td>
+    {% if student.proof_pic == ""  %}
+    No Image
+    {% else %}
+    <img class="img img-fluid mb-2" height="50" width="50"
+        src="{{student.proof_pic}}" alt="">
+    {% endif %}
+</td>
+<td>{{student.Category}}</td>
+
+                                   
+                        
+                                    </td>
+                                </tr>
+                               
+{% endfor %}
+{% else %}
+No search results for this query
+{% endif %}
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
